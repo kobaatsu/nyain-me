@@ -1,4 +1,6 @@
-# necomu.com
+# nyain.me
+
+![](https://github.com/kobaatsu/nyain-me/workflows/deploy/badge.svg)
 
 > neko+community
 

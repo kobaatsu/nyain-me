@@ -1,29 +1,27 @@
-name: Node CI
-
+name: deploy
 on:
   push:
     branches:
       - master
-    
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
-
+        node-version: [12.x]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: functions setup
+      run: |
+        cd functions
+        npm install
+        cd ../
+    - name: npm install, build, and deploy
       run: |
         npm install
         npm run build
-        firebase deploy
-      env:
-        CI: true
+        npx firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
