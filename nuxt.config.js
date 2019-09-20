@@ -1,4 +1,5 @@
 export default {
+  srcDir: 'app',
   mode: 'spa',
   /*
    ** Headers of the page
@@ -57,8 +58,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    // https://ja.nuxtjs.org/api/configuration-build/#extractcss
-    extractCSS: true,
     postcss: {
       plugins: {
         'css-mqpacker': {}
@@ -80,5 +79,6 @@ export default {
         })
       }
     }
-  }
+  },
+  generate: { dir: 'functions/dist' }
 }
